@@ -2,6 +2,8 @@ FROM alpine
 
 ENV TITLE=Trackmania GAME_SETTINGS=tracklist.xml DEDICATED_CFG=dedicated_cfg.xml
 
+ARG SERVER_ZIP="http://files.v04.maniaplanet.com/server/TrackmaniaServer_Latest.zip"
+
 WORKDIR /defaultconf
 
 COPY tracklist.default.xml dedicated_cfg.default.xml ./
@@ -12,7 +14,7 @@ COPY entrypoint.sh .
 
 RUN chmod +x entrypoint.sh && \
     apk add --no-cache tree curl wget zip > /dev/null && \
-    curl http://files.v04.maniaplanet.com/server/TrackmaniaServer_Latest.zip -s -o server.zip > /dev/null && \
+    curl $SERVER_ZIP -s -o server.zip > /dev/null && \
     unzip -q server.zip > /dev/null && \
     rm server.zip && \
     chmod +x TrackmaniaServer
