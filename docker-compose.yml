@@ -1,0 +1,18 @@
+version: "3"
+services:
+    trackmania-dedicated:
+        image: tm2020-dedicated
+        build: .
+        volumes:
+            - ./data/UserData:/app/UserData
+        ports:
+            - 2350:2350
+            - 2350:2350/udp
+            - 3450:3450
+            - 3450:3450/udp
+            - 5000:5000
+        # environment: #OPTIONNAL
+        #     - TITLE=Trackmania #OPTIONNAL
+        #     - GAME_SETTINGS=tracklist.xml #OPTIONNAL
+        #     - DEDICATED_CFG=dedicated_cfg.xml #OPTIONNAL
+        #     - SERVER_IP=0.0.0.0 #OPTIONNAL
