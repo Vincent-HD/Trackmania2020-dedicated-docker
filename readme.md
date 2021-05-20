@@ -18,7 +18,7 @@ Edit (not mandatory) the ``docker-compose.yml`` if you want to change the IP, or
 
 Once done, type :
 
-``docker-compose up -d`
+``docker-compose up -d``
 
 The server should start on port ``2350``
 
