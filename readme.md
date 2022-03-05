@@ -24,6 +24,6 @@ The server should start on port ``2350``
 
 ## Edit configuration files
 
-You can edit ``dedicated_cfg.default.xml`` or/and ``tracklist.default.xml`` (❗ Before building the image ❗)
+You can edit ``dedicated_cfg.default.xml`` (❗ Before building the image ❗)
 
-Or after starting the server you can stop it, and edit the files that has been generated in your current directory (under ``data/UserData/Config`` and ``data/UserData/Maps/MatchSettings``)
+Or after starting the server you can stop it, and edit the files that has been generated in your current directory (under ``data/UserData/Config``)

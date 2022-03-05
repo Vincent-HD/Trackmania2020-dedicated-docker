@@ -1,6 +1,7 @@
 #!/bin/sh
 dedicated_cfg_path="UserData/Config/${DEDICATED_CFG}"
-game_settings_path="UserData/Maps/MatchSettings/${GAME_SETTINGS}"
+game_settings_dir_path="UserData/Maps/MatchSettings/${GAME_SETTINGS}"
+game_settings_path="$game_settings_dir_path/${GAME_SETTINGS}"
 
 mkdir -p  UserData/Config UserData/Maps/MatchSettings UserData/Maps/MatchSettings UserData/Maps/Campaigns UserData/Maps/Downloaded
 
@@ -19,11 +20,11 @@ fi
 if [[ ! -f "$game_settings_path" ]]; then
     printf "Missing file %s\n" "$game_settings_path"
     printf "Copying default config file\n"
-    cp /defaultconf/tracklist.default.xml $game_settings_path
+    cp $game_settings_dir_path/example.txt $game_settings_dir_path/${GAME_SETTINGS}.xml
 fi
 
 printf '===========================\n\n'
 printf "Starting Trackmania with public IP: '%s'\nMatchSettings file: '%s'\nDedicated config file: '%s'" ${SERVER_IP} $game_settings_path $dedicated_cfg_path
 printf '\n\n===========================\n'
 
-./TrackmaniaServer /nodaemon /title=${TITLE} /bindip=${SERVER_IP} /game_settings=Matchsettings/${GAME_SETTINGS} /dedicated_cfg=${DEDICATED_CFG}
+./TrackmaniaServer /nodaemon /title="${TITLE}" /game_settings="Matchsettings/${GAME_SETTINGS}" /dedicated_cfg="${DEDICATED_CFG}"

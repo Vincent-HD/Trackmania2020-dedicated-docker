@@ -6,7 +6,7 @@ ARG SERVER_ZIP="http://files.v04.maniaplanet.com/server/TrackmaniaServer_Latest.
 
 WORKDIR /defaultconf
 
-COPY tracklist.default.xml dedicated_cfg.default.xml ./
+COPY dedicated_cfg.default.xml ./
 
 WORKDIR /app
 
