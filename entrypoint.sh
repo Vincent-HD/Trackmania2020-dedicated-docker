@@ -1,6 +1,6 @@
 #!/bin/sh
 dedicated_cfg_path="UserData/Config/${DEDICATED_CFG}"
-game_settings_dir_path="UserData/Maps/MatchSettings/${GAME_SETTINGS}"
+game_settings_dir_path="UserData/Maps/MatchSettings"
 game_settings_path="$game_settings_dir_path/${GAME_SETTINGS}"
 
 mkdir -p  UserData/Config UserData/Maps/MatchSettings UserData/Maps/MatchSettings UserData/Maps/Campaigns UserData/Maps/Downloaded
