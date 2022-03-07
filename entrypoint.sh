@@ -1,5 +1,8 @@
 #!/bin/sh
-dedicated_cfg_path="UserData/Config/${DEDICATED_CFG}"
+dedicated_cfg_dir="UserData/Config"
+dedicated_cfg_path="${dedicated_cfg_dir}/${DEDICATED_CFG}"
+customconf_dir="/customconf"
+defaultconf_dir="/defaultconf"
 game_settings_dir_path="UserData/Maps/MatchSettings"
 game_settings_path="$game_settings_dir_path/${GAME_SETTINGS}"
 
@@ -13,14 +16,24 @@ fi
 
 if [[ ! -f "$dedicated_cfg_path" ]]; then
     printf "Missing file %s\n" "$dedicated_cfg_path"
-    printf "Copying default config file\n"
-    cp /defaultconf/dedicated_cfg.default.xml $dedicated_cfg_path
+    if [[ -f "${customconf_dir}/${DEDICATED_CFG}" ]]; then
+        printf "Found custom dedicated config file, copying ...\n"
+        cp ${customconf_dir}/${DEDICATED_CFG} $dedicated_cfg_path
+    else
+        printf "Copying default config file\n"
+        cp /defaultconf/dedicated_cfg.default.txt $dedicated_cfg_path
+    fi
 fi
 
 if [[ ! -f "$game_settings_path" ]]; then
     printf "Missing file %s\n" "$game_settings_path"
-    printf "Copying default config file\n"
-    cp $game_settings_dir_path/example.txt $game_settings_dir_path/${GAME_SETTINGS}.xml
+    if [[ -f "${customconf_dir}/${GAME_SETTINGS}" ]]; then
+        printf "Found custom tracklist config file, copying ...\n"
+        cp ${customconf_dir}/${GAME_SETTINGS} $game_settings_path
+    else
+        printf "Copying default config file\n"
+        cp /defaultconf/example.txt $game_settings_path
+    fi
 fi
 
 printf '===========================\n\n'

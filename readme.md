@@ -22,8 +22,19 @@ Once done, type :
 
 The server should start on port ``2350``
 
-## Edit configuration files
+## Custom configuration files
 
-You can edit ``dedicated_cfg.default.xml`` (❗ Before building the image ❗)
+### AT BUILD TIME
+For adding your custom config files. You need to add them in this folder, and called them ``<configname>.dedicated_cfg.xml`` and/or ``<configname>.tracklist_cfg.xml``, after doing that, change the two environnement variables in Dockerfile from
 
-Or after starting the server you can stop it, and edit the files that has been generated in your current directory (under ``data/UserData/Config``)
+``GAME_SETTINGS=tracklist.xml DEDICATED_CFG=dedicated_cfg.xml``
+
+to
+
+``GAME_SETTINGS=<configname>.tracklist_cfg.xml DEDICATED_CFG=<configname>.dedicated_cfg.xml``
+
+Your configurations files will be now copied as default one once the container will first start
+
+### AT RUNNING TIME
+
+Juste edit config files present in ``data/<pathtoconfigpath>``
