@@ -3,6 +3,7 @@
 
  - Working Docker instance
  - Docker compose installed
+ - *OPTIONAL: jq installed when using makefile*
 
 ## How to use it:
 
