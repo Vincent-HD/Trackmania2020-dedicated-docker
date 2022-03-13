@@ -2,7 +2,8 @@ FROM alpine
 
 ENV TITLE=Trackmania GAME_SETTINGS=tracklist.xml DEDICATED_CFG=dedicated_cfg.xml
 
-ARG SERVER_ZIP="http://files.v04.maniaplanet.com/server/TrackmaniaServer_Latest.zip"
+# Default to GLIBC_TAG=2.34-r0 version in case of not building by makefile
+ARG SERVER_ZIP="http://files.v04.maniaplanet.com/server/TrackmaniaServer_Latest.zip" GLIBC_TAG="2.34-r0"
 
 WORKDIR /customconf
 
@@ -24,8 +25,8 @@ RUN chmod +x entrypoint.sh && \
     chmod +x TrackmaniaServer
 
 RUN wget -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub > /dev/null && \
-    wget -q https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.33-r0/glibc-2.33-r0.apk > /dev/null && \
-    apk add glibc-2.33-r0.apk > /dev/null 
+    wget -q https://github.com/sgerrand/alpine-pkg-glibc/releases/download/$GLIBC_TAG/glibc-$GLIBC_TAG.apk > /dev/null && \
+    apk add glibc-$GLIBC_TAG.apk > /dev/null 
 
 EXPOSE 2350 2350/udp 3450 3450/udp 5000
 

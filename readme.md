@@ -6,6 +6,8 @@
 
 ## How to use it:
 
+>Recommended way to build image is to using makefile to get latest version of glibc
+
 Clone the repository:
 
 
